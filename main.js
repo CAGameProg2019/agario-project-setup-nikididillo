@@ -41,12 +41,15 @@ function init() {
 
 function update() {
   c.clearRect(0, 0, canvas.width, canvas.height);
+  player.x = mpos.x;
+  player.y = mpos.y;
 
   for(let i = 0; i < foods.length; i++) {
     let eaten = player.intersects(foods[i]);
     if(!eaten) {
       foods[i].draw(c);
     } else {
+      player.addMass(foods[i].mass);
       foods.splice(i, 1);
       i--;
     }
