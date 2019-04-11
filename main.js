@@ -34,9 +34,10 @@ function generateFood() {
 function init() {
   mpos = new Vector(canvas.width/2, canvas.height/2);
   player = new Player(canvas.width/2, canvas.height/2, 25, randomColor());
-  for(let i = 0; 1 <100; i++) {
+  for(let i = 0; i < FOOD_COUNT; i++) {
     generateFood();
 }
+  update();
 }
 
 function update() {
@@ -59,6 +60,8 @@ function update() {
     generateFood();
   }
 
+  player.x = mpos.x;
+  player.y = mpos.y;
   player.draw(c);
 
   requestAnimationFrame(update);
@@ -70,6 +73,6 @@ window.addEventListener('load', function() {
     window.addEventListener('mousemove', function(event) {
       mpos.x = event.clientX - canvas.offsetLeft;
       mpos.y = event.clientY - canvas.offsetTop;
-      mpos.print();
+      //mpos.print();
     });
 });
