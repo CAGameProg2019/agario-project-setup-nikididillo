@@ -41,8 +41,10 @@ function generateFood() {
   let x = Math.random() * canvas.width;
   let y = Math.random() * canvas.height;
   let color = randomColor();
+  let obstacle = new Food(300, 400, 30, "black");
   let food = new Food(x, y, 8, color);
   foods.push(food);
+  foods.push(obstacle);
 }
 
 function init() {
